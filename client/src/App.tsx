@@ -2,6 +2,7 @@ import { useState, createContext } from "react";
 import Navbar from "../src/components/custom/Navbar";
 import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sellpage from "./pages/Sellpage";
 
 export const appContext = createContext({
   isLogged: false,
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<div>About</div>} />
           <Route path="/contact" element={<div>Contact</div>} />
+          <Route path="/sellcar" element={<Sellpage />} />
         </Routes>
       </BrowserRouter>
     </appContext.Provider>
