@@ -22,7 +22,8 @@
     "local": "^0.3.3",
     "mongoose": "^8.2.3",
     "morgan": "^1.10.0",
-    "passport": "^0.7.0"
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
