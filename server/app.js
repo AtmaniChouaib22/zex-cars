@@ -6,6 +6,8 @@ const MongoStore = require('connect-mongo');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
+const router = require('./Routes/router');
+require('./config/passport');
 
 //environment variables
 const PORT = process.env.PORT || 3000;
@@ -67,6 +69,8 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+app.use('/api', router);
+
 //error handling middleware for development environment
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
@@ -74,7 +78,6 @@ app.use(function (err, req, res, next) {
     message: err.message,
     error: app.get('env') === 'development' ? err : {},
   });
-  s;
 });
 
 serverLunch();
