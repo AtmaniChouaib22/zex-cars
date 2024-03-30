@@ -10,7 +10,7 @@ const UserSchema = new Schema(
     salt: String,
     admin: { type: Boolean, default: false },
     phone: { type: String, required: true, unique: true },
-    avatar: { type: String },
+    avatar: { type: String, default: 'default_avatar.png' },
   },
   {
     timestamps: true,
