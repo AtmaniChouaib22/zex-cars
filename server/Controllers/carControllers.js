@@ -112,4 +112,21 @@ const buy_car = async (req, res, next) => {
   }
 };
 
-module.exports = { create_car, buy_car };
+//get all cars for user
+
+const get_available_cars = async (req, res, next) => {
+  try {
+    const cars = await Car.find({ status: 'available' });
+    if (cars.length === 0) {
+      return res.json({ message: 'No available cars right now' });
+    } else {
+      return res.json(cars);
+    }
+  } catch (error) {
+    const err = new Error('error getting available cars');
+    err.status = 400;
+    next(err);
+  }
+};
+
+module.exports = { create_car, buy_car, get_available_cars };
