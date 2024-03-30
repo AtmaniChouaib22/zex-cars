@@ -2,14 +2,23 @@ const router = require('express').Router();
 const passport = require('passport');
 const multer = require('multer');
 const path = require('path');
-const { register_user } = require('../Controllers/userControllers');
-const { create_car, buy_car } = require('../Controllers/carControllers');
+const {
+  register_user,
+  get_profile,
+  get_user_deals,
+  add_avatar,
+} = require('../Controllers/userControllers');
+const {
+  create_car,
+  buy_car,
+  get_available_cars,
+} = require('../Controllers/carControllers');
 const { isAuth } = require('../Utils/authent');
 
 // Multer configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/uploads');
+    cb(null, '../client/uploads/cars');
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -23,7 +32,7 @@ const upload = multer({ storage: storage });
 //avatar upload
 const storage_av = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '../client/uploads');
+    cb(null, '../client/uploads/avatars');
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
@@ -43,7 +52,7 @@ router.get('/', (req, res) => {
 router.post('/register', register_user);
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.send('logged in');
+  res.json('logged in');
 });
 
 router.post('/logout', isAuth, function (req, res) {
@@ -66,6 +75,15 @@ router.post('/logout', isAuth, function (req, res) {
 // add a car post request
 router.post('/sellcar', isAuth, upload.single('image'), create_car);
 
+router.post('/avatar', isAuth, upload_av.single('avatar'), add_avatar);
+
 router.post('/buycar', isAuth, buy_car);
+
+// get requests
+router.get('/profile', isAuth, get_profile);
+
+router.get('/cars-av', get_available_cars);
+
+router.get('/mydeals', isAuth, get_user_deals);
 
 module.exports = router;
