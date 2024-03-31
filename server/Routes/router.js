@@ -52,7 +52,8 @@ router.get('/', (req, res) => {
 router.post('/register', register_user);
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.json('logged in');
+  const { first_name, last_name, email, avatar, admin, id } = req.user;
+  res.json({ first_name, last_name, email, avatar, admin, id });
 });
 
 router.post('/logout', isAuth, function (req, res) {
