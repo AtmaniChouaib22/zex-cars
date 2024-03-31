@@ -15,8 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const links = [
-  { name: "Buy", path: "/allcars" },
-  { name: "Sell", path: "/sellcar" },
+  { name: "Buy", path: "/buycar" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
@@ -28,14 +27,25 @@ const NavMobileLinks = ({ isLogged }: { isLogged: boolean }) => {
   return (
     <div className="flex flex-col gap-4 items-start">
       {isLogged ? (
-        <Link to={"#"} className="flex items-center gap-1">
-          <Avatar>
-            <AvatarImage src="../src/assets/logo.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          My Account
-        </Link>
-      ) : null}
+        <>
+          <Link to={"/profile"} className="flex items-center gap-1">
+            <Avatar>
+              <AvatarImage src="../src/assets/logo.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            My Account
+          </Link>
+          <Button variant={"link"} key={"sellcar"}>
+            <Link to={"/sellcar"} className="text-zinc-950">
+              sell
+            </Link>
+          </Button>
+        </>
+      ) : (
+        <Button size={"sm"}>
+          <Link to={"/login"}>Login</Link>
+        </Button>
+      )}
       {links.map((link) => (
         <Button variant={"link"} key={link.name}>
           <Link to={link.path}>{link.name}</Link>
@@ -46,11 +56,11 @@ const NavMobileLinks = ({ isLogged }: { isLogged: boolean }) => {
 };
 
 const Navbar = () => {
-  const { isLogged } = useContext(appContext);
+  const { isLogged, user } = useContext(appContext);
   const [isSideMenuOpen, setMenu] = useState(false);
 
   return (
-    <nav className="flex justify-between bg-zinc-100 py-3 px-8 items-center shadow-sm">
+    <nav className="flex justify-between bg-zinc-100 py-3 px-6 items-center shadow-sm">
       <section className="flex items-center gap-4">
         <FaBars
           className="block sm:hidden cursor-pointer"
@@ -61,9 +71,28 @@ const Navbar = () => {
         </Link>
       </section>
 
+      {/* login and register for mobile view */}
+      {!isLogged ? (
+        <div className="sm:hidden flex gap-1 items-center">
+          <Button size={"sm"}>
+            <Link to={"/register"}>Register</Link>
+          </Button>
+        </div>
+      ) : null}
+
       {/* links for pc view */}
       <div className="hidden sm:flex gap-10">
         <ul className="flex items-center gap-2">
+          {isLogged && (
+            <Button variant={"link"} key={"sellcar"}>
+              <Link
+                to={"/sellcar"}
+                className="text-zinc-500 hover:text-zinc-950"
+              >
+                sell
+              </Link>
+            </Button>
+          )}
           {links.map((link) => (
             <Button variant={"link"} key={link.name}>
               <Link
@@ -79,10 +108,10 @@ const Navbar = () => {
           {!isLogged ? (
             <>
               <Button>
-                <Link to={"#"}>Register</Link>
+                <Link to={"/register"}>Register</Link>
               </Button>
               <Button>
-                <Link to={"#"}>Login</Link>
+                <Link to={"/login"}>Login</Link>
               </Button>
             </>
           ) : null}
@@ -92,7 +121,7 @@ const Navbar = () => {
               <DropdownMenuTrigger>
                 <Link to={"#"}>
                   <Avatar>
-                    <AvatarImage src="../src/assets/logo.png" />
+                    <AvatarImage src={`../uploads/avatars/${user.avatar}`} />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                 </Link>
