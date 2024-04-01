@@ -53,4 +53,57 @@ const sellCar = async (carData: any, file: File) => {
   return response.data;
 };
 
-export { fetchAvailableCars, login, sellCar };
+//register user
+
+const register = async (userData: any) => {
+  const response = await axios.post(
+    "http://localhost:3000/api/register",
+    userData,
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+};
+
+//fetch user deals (buy/sell)
+
+const fetchUserDeals = async () => {
+  const response = await axios.get("http://localhost:3000/api/mydeals", {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data;
+};
+
+//user avatar
+
+const fetchUserAvatar = async (file: File) => {
+  const formData = new FormData();
+  formData.append("avatar", file);
+  const response = await axios.post(
+    "http://localhost:3000/api/avatar",
+    formData,
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+  return response.data;
+};
+
+export {
+  fetchAvailableCars,
+  login,
+  sellCar,
+  register,
+  fetchUserDeals,
+  fetchUserAvatar,
+};
