@@ -1,5 +1,6 @@
 const Car = require('../Models/CarSchema.js');
 const Deal = require('../Models/DealSchema.js');
+const mongoose = require('mongoose');
 
 // Create a new car
 const create_car = async (req, res, next) => {
@@ -72,6 +73,11 @@ const buy_car = async (req, res, next) => {
   const { car_id, payment_method } = req.body;
   const buyer = req.user._id;
   //info checking
+  if (!mongoose.Types.ObjectId.isValid(car_id)) {
+    const err = new Error('Invalid car_id');
+    err.status = 400;
+    return next(err);
+  }
   if (!buyer) {
     const err = new Error('you must be logged in to buy a car');
     err.status = 400;
