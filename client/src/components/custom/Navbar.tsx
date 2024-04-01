@@ -23,17 +23,23 @@ const links = [
 {
   /* mobile navigation links  */
 }
-const NavMobileLinks = ({ isLogged }: { isLogged: boolean }) => {
+const NavMobileLinks = ({
+  isLogged,
+  user,
+}: {
+  isLogged: boolean;
+  user: object;
+}) => {
   return (
     <div className="flex flex-col gap-4 items-start">
       {isLogged ? (
         <>
           <Link to={"/profile"} className="flex items-center gap-1">
             <Avatar>
-              <AvatarImage src="../src/assets/logo.png" />
+              <AvatarImage src={`../uploads/avatars/${user.avatar}`} />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
-            My Account
+            My Profile
           </Link>
           <Button variant={"link"} key={"sellcar"}>
             <Link to={"/sellcar"} className="text-zinc-950">
@@ -55,6 +61,9 @@ const NavMobileLinks = ({ isLogged }: { isLogged: boolean }) => {
   );
 };
 
+{
+  /* Navbar component */
+}
 const Navbar = () => {
   const { isLogged, user } = useContext(appContext);
   const [isSideMenuOpen, setMenu] = useState(false);
@@ -89,7 +98,7 @@ const Navbar = () => {
                 to={"/sellcar"}
                 className="text-zinc-500 hover:text-zinc-950"
               >
-                sell
+                Sell
               </Link>
             </Button>
           )}
@@ -129,7 +138,7 @@ const Navbar = () => {
               <DropdownMenuContent>
                 {/* account details */}
                 <DropdownMenuItem>
-                  <Link to={"#"}>My Account</Link>
+                  <Link to={"/profile"}>My Profile</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
@@ -147,7 +156,7 @@ const Navbar = () => {
       {/* sidebar */}
       <div
         className={clsx(
-          " fixed h-full w-screen sm:hidden bg-black/50  backdrop-blur-sm top-0 right-0  -translate-x-full  transition-all",
+          "z-50 fixed h-full w-screen sm:hidden bg-black/50  backdrop-blur-sm top-0 right-0  -translate-x-full  transition-all",
           isSideMenuOpen && "translate-x-0"
         )}
       >
@@ -157,7 +166,12 @@ const Navbar = () => {
             className="mt-0 mb-8 text-3xl cursor-pointer"
           />
 
-          <NavMobileLinks isLogged={isLogged} />
+          <NavMobileLinks isLogged={isLogged} user={user} />
+          {isLogged && (
+            <Button variant={"destructive"} className="cursor-pointer">
+              Logout
+            </Button>
+          )}
         </section>
       </div>
     </nav>
