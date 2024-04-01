@@ -27,8 +27,9 @@ const LoginForm = () => {
     setIsLoading(true);
     try {
       const response = await login(loginData);
-      const { firstName, lastName, email, admin, avatar, id } = response;
-      setUser({ firstName, lastName, email, admin, avatar, id });
+      const { first_name, last_name, email, admin, avatar, id, phone } =
+        response;
+      setUser({ first_name, last_name, email, admin, avatar, id, phone });
       setIsLogged(true);
       setIsLoading(false);
       navigate("/");
