@@ -12,6 +12,7 @@ const BuyPage = () => {
     const getCars = async () => {
       setIsLoading(true);
       try {
+        setError(null);
         const cars = await fetchAvailableCars();
         setAvailableCars(cars);
         setIsLoading(false);
@@ -29,6 +30,9 @@ const BuyPage = () => {
         isLoading && "flex justify-center h-full items-center"
       )}
     >
+      <div className="text-center sm:text-3xl text-2xl font-bold">
+        All Available Cars
+      </div>
       {error && (
         <div className="text-3xl text-center ">Something went wrong</div>
       )}
