@@ -1,14 +1,5 @@
 // Start Landing
 <div className="banner">
-  <div className="slider1 active">
-    <img src="../assets/img1.jpg" id="slid" alt="" />
-  </div>
-  <div className="slider2">
-    <img src="../assets/img2.jpg" id="slid" alt="" />
-  </div>
-  <div className="slider3">
-    <img src="../assets/img3.jpg" id="slid" alt="" />
-  </div>
   <div className="overlay">
     <div className="content">
       <h1>Click your next</h1>
