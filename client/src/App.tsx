@@ -7,14 +7,16 @@ import BuyPage from "./pages/BuyPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrPage from "./pages/RegistrPage";
 import ProfilePage from "./pages/ProfilePage";
+import CardetailsPage from "./pages/CardetailsPage";
+import Footer from "./components/custom/Footer";
 
 export const appContext = createContext({
   isLogged: false,
   setIsLogged: (isLogged: boolean) => {},
   isLoading: false,
   setIsLoading: (isLoading: boolean) => {},
-  error: null,
-  setError: (error: any) => {},
+  err: null,
+  setError: (err: any) => {},
   user: {},
   setUser: (user: object) => {},
   success: null,
@@ -24,7 +26,7 @@ export const appContext = createContext({
 function App() {
   const [isLoagged, setIsLogged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [err, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [user, setUser] = useState({
     first_name: "",
@@ -43,7 +45,7 @@ function App() {
         setIsLogged: setIsLogged,
         isLoading: isLoading,
         setIsLoading: setIsLoading,
-        error: error,
+        err: err,
         setError: setError,
         user: user,
         setUser: setUser,
@@ -62,7 +64,9 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegistrPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="buycar/:id" element={<CardetailsPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </appContext.Provider>
   );
