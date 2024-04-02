@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import clsx from "clsx";
 
 const Caritem = ({
   title,
@@ -35,7 +36,14 @@ const Caritem = ({
         </div>
         <div>
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold py-1">
-            <Badge>{status}</Badge>
+            <Badge
+              className={clsx({
+                "bg-green-500 hover:bg-green-600": status === "available",
+                "bg-red-500 hover:bg-red-600": status === "sold",
+              })}
+            >
+              {status}
+            </Badge>
           </div>
           <div>
             <Badge variant={"secondary"}>{fuel_type}</Badge>

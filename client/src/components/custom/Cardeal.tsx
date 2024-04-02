@@ -1,4 +1,5 @@
 import { Badge } from "../ui/badge";
+import clsx from "clsx";
 const Cardeal = ({
   title,
   image,
@@ -8,7 +9,7 @@ const Cardeal = ({
 }: {
   title: string;
   image: string;
-  confirmed: boolean;
+  confirmed: string;
   price: number;
   status: string;
 }) => {
@@ -24,9 +25,18 @@ const Cardeal = ({
         </div>
         <div>
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
-            <Badge>{confirmed || status}</Badge>
+            <Badge
+              className={clsx({
+                "bg-green-500 hover:bg-green-600":
+                  status === "available" || confirmed === "confirmed",
+                "bg-red-500 hover:bg-red-600":
+                  status === "sold" || confirmed === "rejected",
+              })}
+            >
+              {confirmed || status}
+            </Badge>
           </div>
-          <div className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+          <div className="block mt-1 text-lg leading-tight font-medium text-zinc-900 hover:underline">
             {title}
           </div>
         </div>

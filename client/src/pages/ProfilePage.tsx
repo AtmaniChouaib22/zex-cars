@@ -66,7 +66,12 @@ const ProfilePage = () => {
                 onChange={handleFileChange}
                 className="cursor-pointer"
               ></Input>
-              <Button onClick={handleAvatarSubmit}>set avatar</Button>
+              <Button
+                onClick={handleAvatarSubmit}
+                className="bg-zinc-800 text-white hover:bg-zinc-900"
+              >
+                set avatar
+              </Button>
             </div>
           </div>
           <div className="bg-white shadow-md rounded px-1 sm:px-8 pt-6 pb-8 max-w-xl w-full">
