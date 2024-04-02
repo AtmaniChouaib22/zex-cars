@@ -8,6 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const router = require('./Routes/router');
 require('./config/passport');
+const CustomError = require('./Utils/errorMiddleware');
 
 //environment variables
 const PORT = process.env.PORT || 3000;
@@ -72,12 +73,12 @@ app.get('/', (req, res) => {
 app.use('/api', router);
 
 //error handling middleware for development environment
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: app.get('env') === 'development' ? err : {},
-  });
+app.use((err, req, res, next) => {
+  if (err instanceof CustomError) {
+    res.status(err.status).json({ error: err.message });
+  } else {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
 });
 
 serverLunch();
