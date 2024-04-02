@@ -99,6 +99,32 @@ const fetchUserAvatar = async (file: File) => {
   return response.data;
 };
 
+//fetch single available car
+
+const fetchSingleCar = async (id: string) => {
+  const response = await axios.get(`http://localhost:3000/api/cars-av/${id}`, {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data;
+};
+
+// buy car
+const buyCar = async (car_id: string, payment_method: string) => {
+  const response = await axios.post(
+    "http://localhost:3000/api/buycar",
+    { car_id, payment_method },
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+};
 export {
   fetchAvailableCars,
   login,
@@ -106,4 +132,6 @@ export {
   register,
   fetchUserDeals,
   fetchUserAvatar,
+  fetchSingleCar,
+  buyCar,
 };
