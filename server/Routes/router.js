@@ -12,6 +12,7 @@ const {
   create_car,
   buy_car,
   get_available_cars,
+  get_single_car,
 } = require('../Controllers/carControllers');
 const { isAuth } = require('../Utils/authent');
 
@@ -86,5 +87,7 @@ router.get('/profile', isAuth, get_profile);
 router.get('/cars-av', get_available_cars);
 
 router.get('/mydeals', isAuth, get_user_deals);
+
+router.get('/cars-av/:id', get_single_car);
 
 module.exports = router;

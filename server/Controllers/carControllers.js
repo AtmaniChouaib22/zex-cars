@@ -1,7 +1,7 @@
 const Car = require('../Models/CarSchema.js');
 const Deal = require('../Models/DealSchema.js');
 const mongoose = require('mongoose');
-
+const CustomError = require('../Utils/errorMiddleware');
 // Create a new car
 const create_car = async (req, res, next) => {
   const {
@@ -26,14 +26,10 @@ const create_car = async (req, res, next) => {
   const image = req.file.filename;
   const owner = req.user._id;
   if (!owner) {
-    const err = new Error('you must be logged in to add a car');
-    err.status = 400;
-    return next(err);
+    throw new CustomError('you must be logged in to add a car', 400);
   }
   if (!image || !title || !make || !model || !year || !price) {
-    const err = new Error('missing required fields');
-    err.status = 400;
-    return next(err);
+    throw new CustomError('missing required fields', 400);
   }
 
   try {
@@ -58,12 +54,10 @@ const create_car = async (req, res, next) => {
       gears: +gears,
     });
     await newCar.save().then((car) => {
-      res.json({ message: 'Car added', car: car });
+      res.json({ message: 'Car sell request sent to admin', car: car });
     });
   } catch (error) {
-    const err = new Error('error adding car');
-    err.status = 400;
-    next(err);
+    next(error);
   }
 };
 
@@ -71,35 +65,26 @@ const create_car = async (req, res, next) => {
 
 const buy_car = async (req, res, next) => {
   const { car_id, payment_method } = req.body;
+  console.log(req.body);
   const buyer = req.user._id;
   //info checking
   if (!mongoose.Types.ObjectId.isValid(car_id)) {
-    const err = new Error('Invalid car_id');
-    err.status = 400;
-    return next(err);
+    throw new CustomError('Invalid car_id', 400);
   }
   if (!buyer) {
-    const err = new Error('you must be logged in to buy a car');
-    err.status = 400;
-    return next(err);
+    throw new CustomError('you must be logged in to buy a car', 400);
   }
   if (!car_id) {
-    const err = new Error('missing required fields');
-    err.status = 400;
-    return next(err);
+    throw new CustomError('internal server error', 500);
   }
-  if (payment_method !== 'cash' && payment_method !== 'credit card') {
-    const err = new Error('invalid payment method');
-    err.status = 400;
-    return next(err);
+  if (payment_method !== 'cash' && payment_method !== 'credit_card') {
+    throw new CustomError('invalid payment method', 400);
   }
   //buying process
   try {
     const car = await Car.findById(car_id);
     if (!car) {
-      const err = new Error('car not found');
-      err.status = 404;
-      return next(err);
+      return res.json({ message: 'Car not found' });
     }
     const seller = car.owner;
     const newDeal = new Deal({
@@ -109,12 +94,10 @@ const buy_car = async (req, res, next) => {
       payment_method,
     });
     await newDeal.save().then((deal) => {
-      res.json({ message: 'Car bought', deal: deal });
+      res.json({ message: 'Car buying request in process', deal: deal });
     });
   } catch (error) {
-    const err = new Error('error buying car');
-    err.status = 400;
-    next(err);
+    next(error);
   }
 };
 
@@ -129,10 +112,27 @@ const get_available_cars = async (req, res, next) => {
       return res.json(cars);
     }
   } catch (error) {
-    const err = new Error('error getting available cars');
-    err.status = 400;
-    next(err);
+    next(error);
   }
 };
 
-module.exports = { create_car, buy_car, get_available_cars };
+//get single car
+
+const get_single_car = async (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new CustomError('Invalid car id', 400);
+  }
+  try {
+    const car = await Car.findById(id);
+    if (!car) {
+      return res.json({ message: 'Car Not found' });
+    } else {
+      return res.json(car);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { create_car, buy_car, get_available_cars, get_single_car };
