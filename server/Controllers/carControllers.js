@@ -65,7 +65,6 @@ const create_car = async (req, res, next) => {
 
 const buy_car = async (req, res, next) => {
   const { car_id, payment_method } = req.body;
-  console.log(req.body);
   const buyer = req.user._id;
   //info checking
   if (!mongoose.Types.ObjectId.isValid(car_id)) {
@@ -104,14 +103,26 @@ const buy_car = async (req, res, next) => {
 //get all cars for user
 
 const get_available_cars = async (req, res, next) => {
+  let cars = [];
   try {
-    const cars = await Car.find({ status: 'available' });
+    const id = req.user ? req.user._id : null;
+    if (!id) {
+      cars = await Car.find({
+        status: 'available',
+      });
+    } else {
+      cars = await Car.find({
+        status: 'available',
+        owner: { $ne: id },
+      });
+    }
     if (cars.length === 0) {
       return res.json({ message: 'No available cars right now' });
     } else {
       return res.json(cars);
     }
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
