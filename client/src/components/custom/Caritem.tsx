@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
+import clsx from "clsx";
 
 const Caritem = ({
   title,
@@ -10,25 +11,51 @@ const Caritem = ({
   location,
   fuel_type,
   image,
+}: {
+  title: string;
+  id: string;
+  status: string;
+  price: number;
+  mileage: number;
+  location: string;
+  fuel_type: string;
+  image: string;
 }) => {
   return (
-    <Link to={id}>
-      <div className=" flex flex-col sm:h-72 sm:w-60 w-44 h-64 overflow-hidden shadow-md hover:shadow-zinc-800 rounded-md  bg-white transition duration-150 ease-out hover:ease-in hover:scale-105">
-        <img
-          className="h-auto w-full object-cover rounded-t-md"
-          src={`../uploads/cars/${image}`}
-        />
-        <div className="p-2 flex flex-col gap-2 items-start">
-          <div className="text-lg font-bold truncate">{title}</div>
-          <div className="flex gap-1 items-center flex-wrap">
-            <Badge variant={"secondary"}>{mileage}</Badge>
-            <Badge variant={"secondary"}>{location}</Badge>
+    <Link
+      to={id}
+      className=" bg-white rounded-xl shadow-md shadow-zinc-400 overflow-hidden m-3 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
+    >
+      <div className="p-6 flex flex-col justify-between items-center">
+        <div className="flex-shrink-0 sm:w-full w-full">
+          <img
+            className="w-full sm:h-32 object-cover h-full"
+            src={`../uploads/cars/${image}`}
+            alt="car image"
+          />
+        </div>
+        <div>
+          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold py-1">
+            <Badge
+              className={clsx({
+                "bg-green-500 hover:bg-green-600": status === "available",
+                "bg-red-500 hover:bg-red-600": status === "sold",
+              })}
+            >
+              {status}
+            </Badge>
+          </div>
+          <div>
             <Badge variant={"secondary"}>{fuel_type}</Badge>
+            <Badge variant={"secondary"}>{mileage} km</Badge>
+            <Badge variant={"secondary"}>{location}</Badge>
+          </div>
+          <div className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            {title}
           </div>
         </div>
-        <div className="flex sm:flex-col pl-2 border-t-2 border-zinc-950">
-          <div className="p-2">{price}</div>
-          <div>{status}</div>
+        <div className="mt-4 sm:mt-0 text-sm text-gray-700">
+          <p>{`Price: $ ${price}`}</p>
         </div>
       </div>
     </Link>

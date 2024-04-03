@@ -22,20 +22,20 @@ const LoginForm = () => {
   };
 
   const handleLoginSubmit = async (e) => {
-    setError(null);
     e.preventDefault();
     setIsLoading(true);
     try {
       const response = await login(loginData);
-      const { firstName, lastName, email, admin, avatar, id } = response;
-      setUser({ firstName, lastName, email, admin, avatar, id });
+      const { first_name, last_name, email, admin, avatar, id, phone } =
+        response;
+      setUser({ first_name, last_name, email, admin, avatar, id, phone });
       setIsLogged(true);
       setIsLoading(false);
+      setError(null);
       navigate("/");
-    } catch (error: any) {
+    } catch (err: any) {
       setIsLoading(false);
-      error.response.data = "Invalid email or password";
-      setError(error.response.data);
+      setError(err.response.data);
     }
   };
   return (

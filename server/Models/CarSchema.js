@@ -15,7 +15,7 @@ const CarSchema = new Schema(
       enum: ['pending', 'sold', 'available'],
     },
     price: { type: Number, required: true },
-    description: { type: String, maxlength: 100, default: 'not provided' },
+    description: { type: String, maxlength: 300, default: 'not provided' },
     image: { type: String, required: true },
     mileage: { type: Number },
     n_of_doors: { type: Number },

@@ -53,4 +53,85 @@ const sellCar = async (carData: any, file: File) => {
   return response.data;
 };
 
-export { fetchAvailableCars, login, sellCar };
+//register user
+
+const register = async (userData: any) => {
+  const response = await axios.post(
+    "http://localhost:3000/api/register",
+    userData,
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+};
+
+//fetch user deals (buy/sell)
+
+const fetchUserDeals = async () => {
+  const response = await axios.get("http://localhost:3000/api/mydeals", {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data;
+};
+
+//user avatar
+
+const fetchUserAvatar = async (file: File) => {
+  const formData = new FormData();
+  formData.append("avatar", file);
+  const response = await axios.post(
+    "http://localhost:3000/api/avatar",
+    formData,
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+  return response.data;
+};
+
+//fetch single available car
+
+const fetchSingleCar = async (id: string) => {
+  const response = await axios.get(`http://localhost:3000/api/cars-av/${id}`, {
+    withCredentials: true,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data;
+};
+
+// buy car
+const buyCar = async (car_id: string, payment_method: string) => {
+  const response = await axios.post(
+    "http://localhost:3000/api/buycar",
+    { car_id, payment_method },
+    {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
+};
+export {
+  fetchAvailableCars,
+  login,
+  sellCar,
+  register,
+  fetchUserDeals,
+  fetchUserAvatar,
+  fetchSingleCar,
+  buyCar,
+};

@@ -12,6 +12,7 @@ const {
   create_car,
   buy_car,
   get_available_cars,
+  get_single_car,
 } = require('../Controllers/carControllers');
 const { isAuth } = require('../Utils/authent');
 
@@ -52,8 +53,8 @@ router.get('/', (req, res) => {
 router.post('/register', register_user);
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  const { first_name, last_name, email, avatar, admin, id } = req.user;
-  res.json({ first_name, last_name, email, avatar, admin, id });
+  const { first_name, last_name, email, avatar, admin, id, phone } = req.user;
+  res.json({ first_name, last_name, email, avatar, admin, id, phone });
 });
 
 router.post('/logout', isAuth, function (req, res) {
@@ -86,5 +87,7 @@ router.get('/profile', isAuth, get_profile);
 router.get('/cars-av', get_available_cars);
 
 router.get('/mydeals', isAuth, get_user_deals);
+
+router.get('/cars-av/:id', get_single_car);
 
 module.exports = router;
