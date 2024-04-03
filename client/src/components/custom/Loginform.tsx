@@ -22,7 +22,6 @@ const LoginForm = () => {
   };
 
   const handleLoginSubmit = async (e) => {
-    setError(null);
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -32,11 +31,11 @@ const LoginForm = () => {
       setUser({ first_name, last_name, email, admin, avatar, id, phone });
       setIsLogged(true);
       setIsLoading(false);
+      setError(null);
       navigate("/");
-    } catch (error: any) {
+    } catch (err: any) {
       setIsLoading(false);
-      error.response.data = "Invalid email or password";
-      setError(error.response.data);
+      setError(err.response.data);
     }
   };
   return (

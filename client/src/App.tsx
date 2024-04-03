@@ -19,15 +19,12 @@ export const appContext = createContext({
   setError: (err: any) => {},
   user: {},
   setUser: (user: object) => {},
-  success: null,
-  setSuccess: (success: any) => {},
 });
 
 function App() {
   const [isLoagged, setIsLogged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
   const [user, setUser] = useState({
     first_name: "",
     last_name: "",
@@ -49,8 +46,6 @@ function App() {
         setError: setError,
         user: user,
         setUser: setUser,
-        success: success,
-        setSuccess: setSuccess,
       }}
     >
       <BrowserRouter>

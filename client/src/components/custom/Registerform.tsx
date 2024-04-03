@@ -7,8 +7,8 @@ import RiseLoader from "react-spinners/RiseLoader";
 import { register } from "@/lib/fetchUtils";
 
 const Registerform = () => {
-  const { isLoading, setIsLoading, error, setError, success, setSuccess } =
-    useContext(appContext);
+  const { isLoading, setIsLoading, error, setError } = useContext(appContext);
+  const [data, setData] = useState(null);
   const [registerData, setRegisterData] = useState({
     email: "",
     password: "",
@@ -19,7 +19,7 @@ const Registerform = () => {
 
   const handleRegInputChange = (e) => {
     setError(null);
-    setSuccess(null);
+    setData(null);
     setRegisterData({
       ...registerData,
       [e.target.id]: e.target.value,
@@ -28,13 +28,13 @@ const Registerform = () => {
 
   const handleRegisterSubmit = async (e) => {
     setError(null);
-    setSuccess(null);
+    setData(null);
     e.preventDefault();
     setIsLoading(true);
     try {
       const response = await register(registerData);
       setIsLoading(false);
-      setSuccess(response.message);
+      setData(response.message);
     } catch (error: any) {
       setIsLoading(false);
       setError(error.response.data.message);
@@ -48,9 +48,9 @@ const Registerform = () => {
           {error}
         </div>
       )}
-      {success && (
+      {data && (
         <div className=" text-centee bg-green-500 py-3 px-2 rounded-sm w-full text-white text-center">
-          {success}
+          {data.message}
         </div>
       )}
       <div className="flex flex-col px-2 sm:w-2/4 w-full">

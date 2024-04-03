@@ -102,10 +102,7 @@ const CardetailsPage = () => {
                 <div className="">
                   <span className="text-lg font-bold">Description</span>
                   <p className="text-zinc-700 pb-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorum quaerat fugit quia minus ab impedit quod quidem
-                    excepturi, molestias, ratione provident odit distinctio nemo
-                    dolores at soluta, autem asperiores harum!
+                    {car.description || "Not provided"}
                   </p>
                 </div>
                 <Dialog>

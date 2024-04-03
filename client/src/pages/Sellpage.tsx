@@ -5,7 +5,6 @@ import { appContext } from "@/App";
 import { useState, useContext } from "react";
 import { sellCar } from "@/lib/fetchUtils";
 import RiseLoader from "react-spinners/RiseLoader";
-import { Link } from "react-router-dom";
 
 const Sellpage = () => {
   const { setIsLoading, isLoading, setError, error, user, isLogged } =
@@ -27,6 +26,7 @@ const Sellpage = () => {
     fuel_type: "",
     gears: 0,
     transmission: "",
+    description: "",
   });
 
   const handleChange = (e: any) => {
@@ -73,6 +73,10 @@ const Sellpage = () => {
               <div className="col-span-2">
                 <Label htmlFor="title">Title</Label>
                 <Input type="text" id="title" onChange={handleChange} />
+              </div>
+              <div className="col-span-2">
+                <Label htmlFor="description">Description</Label>
+                <Input type="text" id="description" onChange={handleChange} />
               </div>
               <div>
                 <Label htmlFor="location">location</Label>
