@@ -14,7 +14,15 @@ const {
   get_available_cars,
   get_single_car,
 } = require('../Controllers/carControllers');
-const { isAuth } = require('../Utils/authent');
+const {
+  get_pending_cars,
+  get_unconfirmed_deals,
+  set_available_car,
+  set_rejected_car,
+  confirm_deal,
+  reject_deal,
+} = require('../Controllers/adminControllers');
+const { isAuth, isAdmin } = require('../Utils/authent');
 
 // Multer configuration
 const storage = multer.diskStorage({
@@ -89,5 +97,18 @@ router.get('/cars-av', get_available_cars);
 router.get('/mydeals', isAuth, get_user_deals);
 
 router.get('/cars-av/:id', get_single_car);
+
+//admin routes
+router.get('/waitingcars', isAdmin, get_pending_cars);
+
+router.get('/unconfirmeddeals', isAdmin, get_unconfirmed_deals);
+
+router.patch('/setavailable', isAdmin, set_available_car);
+
+router.patch('/setrejected', isAdmin, set_rejected_car);
+
+router.patch('/confirmdeal', isAdmin, confirm_deal);
+
+router.patch('/rejectdeal', isAdmin, reject_deal);
 
 module.exports = router;
