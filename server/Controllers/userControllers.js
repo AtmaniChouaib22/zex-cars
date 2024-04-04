@@ -101,7 +101,7 @@ const add_avatar = async (req, res, next) => {
       );
     }
     await User.findByIdAndUpdate(_id, { avatar });
-    res.json({ message: 'Avatar added' });
+    res.json(avatar);
   } catch (error) {
     const err = new Error('Error adding avatar');
     err.status = 500;
