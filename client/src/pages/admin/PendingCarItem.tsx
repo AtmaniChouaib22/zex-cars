@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 
-const Caritem = ({
+const PendingCarItem = ({
   title,
   id,
   status,
@@ -29,11 +28,8 @@ const Caritem = ({
   handleSetCarToRefused: (id: string) => void;
 }) => {
   return (
-    <Link
-      to={id}
-      className="w-72 bg-white rounded-xl shadow-md shadow-zinc-400 overflow-hidden m-3 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
-    >
-      <div className="sm:p-6 p-2 flex flex-col justify-between h-full items-center">
+    <div className="w-72 bg-white rounded-xl shadow-md shadow-zinc-400 overflow-hidden m-3 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
+      <div className="sm:p-6 p-2 flex flex-col justify-between items-center h-full">
         <div className="flex-shrink-0 sm:w-full w-full">
           <img
             className="w-full sm:h-32 object-cover h-full rounded-xl"
@@ -87,8 +83,8 @@ const Caritem = ({
           </>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
 
-export default Caritem;
+export default PendingCarItem;
