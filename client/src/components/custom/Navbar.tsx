@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -13,11 +13,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { logout } from "@/lib/fetchUtils";
 
 const links = [
   { name: "Buy", path: "/buycar" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
+];
+
+const adminLinks = [
+  { name: "dashboard", path: "/admin/dashboard" },
+  { name: "pending cars", path: "/admin/pendingcars" },
+  { name: "waiting deals", path: "/admin/waitingdeals" },
 ];
 
 {
@@ -32,7 +39,7 @@ const NavMobileLinks = ({
 }) => {
   return (
     <div className="flex flex-col gap-4 items-start">
-      {isLogged ? (
+      {isLogged && !user.admin ? (
         <>
           <Link to={"/profile"} className="flex items-center gap-1">
             <Avatar>
@@ -43,20 +50,46 @@ const NavMobileLinks = ({
           </Link>
           <Button variant={"link"} key={"sellcar"}>
             <Link to={"/sellcar"} className="text-zinc-950">
-              sell
+              Sell
             </Link>
           </Button>
         </>
       ) : (
-        <Button size={"sm"}>
+        <Button
+          size={"sm"}
+          className="bg-zinc-800 text-white hover:bg-zinc-900"
+        >
           <Link to={"/login"}>Login</Link>
         </Button>
       )}
-      {links.map((link) => (
-        <Button variant={"link"} key={link.name}>
-          <Link to={link.path}>{link.name}</Link>
-        </Button>
-      ))}
+      {/* admin links */}
+      {isLogged && user.admin ? (
+        <>
+          {adminLinks.map((link) => (
+            <Button variant={"link"} key={link.name}>
+              <Link to={link.path}>{link.name}</Link>
+            </Button>
+          ))}
+        </>
+      ) : null}
+      {!isLogged && (
+        <>
+          {links.map((link) => (
+            <Button variant={"link"} key={link.name}>
+              <Link to={link.path}>{link.name}</Link>
+            </Button>
+          ))}
+        </>
+      )}
+      {isLogged && !user.admin && (
+        <>
+          {links.map((link) => (
+            <Button variant={"link"} key={link.name}>
+              <Link to={link.path}>{link.name}</Link>
+            </Button>
+          ))}
+        </>
+      )}
     </div>
   );
 };
@@ -65,8 +98,29 @@ const NavMobileLinks = ({
   /* Navbar component */
 }
 const Navbar = () => {
-  const { isLogged, user } = useContext(appContext);
+  const naviagte = useNavigate();
+  const { isLogged, setIsLogged, user, isLoading, setIsLoading, setUser } =
+    useContext(appContext);
   const [isSideMenuOpen, setMenu] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoading(true);
+    try {
+      await logout();
+      setIsLogged(false);
+      setUser({
+        firstName: "",
+        lastName: "",
+        email: "",
+        avatar: "",
+        admin: false,
+      });
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+    setIsLoading(false);
+    naviagte("/login");
+  };
 
   return (
     <nav className="flex justify-between bg-zinc-100 py-3 px-6 items-center shadow-sm">
@@ -76,15 +130,23 @@ const Navbar = () => {
           onClick={() => setMenu(true)}
         />
         <Link to={"/"} className="text-2xl font-bold">
-          <div>logo</div>
+          <div>ZEXCARS</div>
         </Link>
       </section>
 
       {/* login and register for mobile view */}
       {!isLogged ? (
         <div className="sm:hidden flex gap-1 items-center">
-          <Button size={"sm"}>
-            <Link to={"/register"}>Register</Link>
+          <Button
+            size={"sm"}
+            className="bg-zinc-800 text-white hover:bg-zinc-900"
+          >
+            <Link
+              to={"/register"}
+              className="bg-zinc-800 text-white hover:bg-zinc-900"
+            >
+              Register
+            </Link>
           </Button>
         </div>
       ) : null}
@@ -92,34 +154,60 @@ const Navbar = () => {
       {/* links for pc view */}
       <div className="hidden sm:flex gap-10">
         <ul className="flex items-center gap-2">
-          {isLogged && (
-            <Button variant={"link"} key={"sellcar"}>
-              <Link
-                to={"/sellcar"}
-                className="text-zinc-500 hover:text-zinc-950"
-              >
-                Sell
-              </Link>
-            </Button>
+          {/** normal user links */}
+          {isLogged && !user.admin && (
+            <>
+              <Button variant={"link"} key={"sellcar"}>
+                <Link
+                  to={"/sellcar"}
+                  className="text-zinc-500 hover:text-zinc-950"
+                >
+                  Sell
+                </Link>
+              </Button>
+              {links.map((link) => (
+                <Button variant={"link"} key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-zinc-500 hover:text-zinc-950"
+                  >
+                    {link.name}
+                  </Link>
+                </Button>
+              ))}
+            </>
           )}
-          {links.map((link) => (
-            <Button variant={"link"} key={link.name}>
-              <Link
-                to={link.path}
-                className="text-zinc-500 hover:text-zinc-950"
-              >
-                {link.name}
-              </Link>
-            </Button>
-          ))}
+          {/** admin links */}
+          {isLogged && user.admin ? (
+            <>
+              {adminLinks.map((link) => (
+                <Button variant={"link"} key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-zinc-500 hover:text-zinc-950"
+                  >
+                    {link.name}
+                  </Link>
+                </Button>
+              ))}
+            </>
+          ) : null}
         </ul>
         <ul className="flex items-center gap-2">
           {!isLogged ? (
             <>
-              <Button>
+              <Button variant={"link"}>
+                <Link
+                  to={"/buycars"}
+                  className="text-zinc-500 hover:text-zinc-950"
+                >
+                  Buy
+                </Link>
+              </Button>
+              <Button className="bg-zinc-800 text-white hover:bg-zinc-900">
                 <Link to={"/register"}>Register</Link>
               </Button>
-              <Button>
+              <Button className="bg-zinc-800 text-white hover:bg-zinc-900">
                 <Link to={"/login"}>Login</Link>
               </Button>
             </>
@@ -143,7 +231,11 @@ const Navbar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   {/* logout */}
-                  <Button variant={"destructive"} className="cursor-pointer">
+                  <Button
+                    variant={"destructive"}
+                    className="cursor-pointer"
+                    onClick={handleLogout}
+                  >
                     Logout
                   </Button>
                 </DropdownMenuItem>
@@ -168,7 +260,11 @@ const Navbar = () => {
 
           <NavMobileLinks isLogged={isLogged} user={user} />
           {isLogged && (
-            <Button variant={"destructive"} className="cursor-pointer">
+            <Button
+              variant={"destructive"}
+              className="cursor-pointer"
+              onClick={handleLogout}
+            >
               Logout
             </Button>
           )}
