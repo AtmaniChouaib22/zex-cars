@@ -12,7 +12,7 @@ const CarSchema = new Schema(
     status: {
       type: String,
       default: 'pending',
-      enum: ['pending', 'sold', 'available'],
+      enum: ['pending', 'sold', 'available', 'refused'],
     },
     price: { type: Number, required: true },
     description: { type: String, maxlength: 300, default: 'not provided' },

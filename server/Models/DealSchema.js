@@ -13,8 +13,8 @@ const DealSchema = new Schema(
     },
     confirmed: {
       type: String,
-      default: 'waiting',
-      enum: ['waiting', 'confirmed', 'rejected'],
+      default: 'unconfirmed',
+      enum: ['unconfirmed', 'confirmed', 'rejected'],
     },
   },
   {
