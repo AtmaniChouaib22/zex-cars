@@ -71,10 +71,10 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground h-screen bg-zinc-50;
+    @apply bg-background text-foreground min-h-screen bg-zinc-50;
   }
   #root {
-    @apply h-full;
+    @apply min-h-screen;
   }
 }
 

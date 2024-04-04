@@ -43,6 +43,24 @@ const Sellpage = () => {
         setIsLoading(false);
         setError(response.message);
       }
+      setCarData({
+        title: "",
+        location: "",
+        model: "",
+        mileage: 0,
+        make: "",
+        year: 0,
+        n_of_seats: 0,
+        n_of_doors: 0,
+        colour: "",
+        price: 0,
+        engine_capacity: 0,
+        fuel_tank_capacity: 0,
+        fuel_type: "",
+        gears: 0,
+        transmission: "",
+        description: "",
+      });
     } catch (error) {
       setIsLoading(false);
     }

@@ -23,6 +23,7 @@ const ProfilePage = () => {
     event.preventDefault();
     try {
       const response = await fetchUserAvatar(file);
+      setUser({ ...user, avatar: response });
     } catch (error) {
       setError(error);
     }

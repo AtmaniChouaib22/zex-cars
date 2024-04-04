@@ -9,6 +9,8 @@ import RegistrPage from "./pages/RegistrPage";
 import ProfilePage from "./pages/ProfilePage";
 import CardetailsPage from "./pages/CardetailsPage";
 import Footer from "./components/custom/Footer";
+import PendingCarsPage from "./pages/admin/PendingCarsPage";
+import UnconfirmedDealsPage from "./pages/admin/UnconfirmedDealsPage";
 
 export const appContext = createContext({
   isLogged: false,
@@ -60,6 +62,11 @@ function App() {
           <Route path="/register" element={<RegistrPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="buycar/:id" element={<CardetailsPage />} />
+          <Route path="admin/pendingcars" element={<PendingCarsPage />} />
+          <Route
+            path="admin/unconfirmeddeals"
+            element={<UnconfirmedDealsPage />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
