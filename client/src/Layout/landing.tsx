@@ -14,8 +14,8 @@
       </a>
     </div>
   </div>
-  <video className="video-bg" autoplay muted loop>
-    <source src="../assets/landing.mp4" type="video/mp4" />
+  <video className="video-bg" autoPlay muted loop>
+    <source src=".." type="video/mp4" />
   </video>
 </div>;
 // End Landing
