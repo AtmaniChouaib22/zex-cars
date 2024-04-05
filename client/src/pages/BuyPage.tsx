@@ -25,11 +25,11 @@ const BuyPage = () => {
   return (
     <>
       {isLoading ? (
-        <div className="flex h-full items-center justify-center">
+        <div className="flex min-h-screen items-center justify-center">
           <RiseLoader color="#09090b" size={10} />
         </div>
       ) : (
-        <div className="p-5">
+        <div className="p-5 min-h-screen">
           <div className="text-center sm:text-3xl text-2xl font-bold">
             All Available Cars
           </div>
