@@ -8,6 +8,7 @@ import { FaPlane } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
 import { BsPersonFillCheck } from "react-icons/bs";
 import { BsFillPersonFill } from "react-icons/bs";
+import { BsFillPlayFill } from "react-icons/bs";
 const Home = () => {
   return (
     <>
@@ -20,11 +21,11 @@ const Home = () => {
           <div className="btn">
             <a id="sell" href="#">
               <span>SELL MY CAR</span>
-              <i className="fa fa-play spacer-ml-8"></i>
+              <BsFillPlayFill />
             </a>
             <a id="buy" href="#">
               <span>BUY A CAR</span>
-              <i className="fa fa-play spacer-ml-8"></i>
+              <BsFillPlayFill />
             </a>
           </div>
         </div>
@@ -62,7 +63,7 @@ const Home = () => {
               </div>
             </div>
             <div className="serv-box">
-              <i className="fa-solid fa-car"></i>
+              <FaCar />
               <div className="text">
                 <h3>Unlimited Miles Car Rental</h3>
                 <p>
@@ -72,7 +73,7 @@ const Home = () => {
               </div>
             </div>
             <div className="serv-box">
-              <i className="fa-regular fa-clock"></i>
+              <MdOutlineTimer />
               <div className="text">
                 <h3>Fast & Easy Booking</h3>
                 <p>
@@ -82,7 +83,7 @@ const Home = () => {
               </div>
             </div>
             <div className="serv-box">
-              <i className="fa-solid fa-plane-departure"></i>
+              <FaPlane />
               <div className="text">
                 <h3>Airport Transfer</h3>
                 <p>
@@ -92,7 +93,7 @@ const Home = () => {
               </div>
             </div>
             <div className="serv-box">
-              <i className="fa-solid fa-location-dot"></i>
+              <MdLocationPin />
               <div className="text">
                 <h3>Many Pickup Location</h3>
                 <p>
@@ -113,7 +114,7 @@ const Home = () => {
           </div>
           <div className="col">
             <div className="pl">
-              <i className="fa-solid fa-person-circle-question"></i>
+              <BsFillPersonFill />
             </div>
             <div className="info">
               <span className="head">
@@ -153,8 +154,7 @@ const Home = () => {
               <textarea
                 className="main-input"
                 name="message"
-                placeholder="your message"
-              ></textarea>
+                placeholder="your message"></textarea>
               <Button className="bg-zinc-900 hover:bg-zinc-950">Send</Button>
             </form>
           </div>
@@ -165,7 +165,7 @@ const Home = () => {
           </div>
           <div className="col">
             <div className="pl">
-              <i className="fa-solid fa-user-clock"></i>
+              <BsPersonFillCheck />
             </div>
             <div className="info">
               <span className="head">
