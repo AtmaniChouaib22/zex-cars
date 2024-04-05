@@ -204,6 +204,22 @@ const Navbar = () => {
                   Buy
                 </Link>
               </Button>
+              <Button variant={"link"}>
+                <Link
+                  to={"/contact"}
+                  className="text-zinc-500 hover:text-zinc-950"
+                >
+                  Contact
+                </Link>
+              </Button>
+              <Button variant={"link"}>
+                <Link
+                  to={"/about"}
+                  className="text-zinc-500 hover:text-zinc-950"
+                >
+                  About
+                </Link>
+              </Button>
               <Button className="bg-zinc-800 text-white hover:bg-zinc-900">
                 <Link to={"/register"}>Register</Link>
               </Button>
