@@ -11,6 +11,8 @@ import CardetailsPage from "./pages/CardetailsPage";
 import Footer from "./components/custom/Footer";
 import PendingCarsPage from "./pages/admin/PendingCarsPage";
 import UnconfirmedDealsPage from "./pages/admin/UnconfirmedDealsPage";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 export const appContext = createContext({
   isLogged: false,
@@ -54,8 +56,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<div>About</div>} />
-          <Route path="/contact" element={<div>Contact</div>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/sellcar" element={<Sellpage />} />
           <Route path="/buycar" element={<BuyPage />} />
           <Route path="/login" element={<LoginPage />} />
