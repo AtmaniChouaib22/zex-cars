@@ -38,7 +38,7 @@ const NavMobileLinks = ({
   user: object;
 }) => {
   return (
-    <div className="flex flex-col gap-4 items-start">
+    <div className="flex fixed bg-transparent bg-black flex-col gap-4 items-start">
       {isLogged && !user.admin ? (
         <>
           <Link to={"/profile"} className="flex items-center gap-1">
@@ -123,7 +123,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between bg-zinc-100 py-3 px-6 items-center shadow-sm">
+    <nav className="flex bg-black justify-between text-zinc-100 py-3 px-6 items-center shadow-sm">
       <section className="flex items-center gap-4">
         <FaBars
           className="block sm:hidden cursor-pointer"
@@ -160,7 +160,7 @@ const Navbar = () => {
               <Button variant={"link"} key={"sellcar"}>
                 <Link
                   to={"/sellcar"}
-                  className="text-zinc-500 hover:text-zinc-950"
+                  className="text-zinc-500 hover:text-white"
                 >
                   Sell
                 </Link>
@@ -169,7 +169,7 @@ const Navbar = () => {
                 <Button variant={"link"} key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-zinc-500 hover:text-zinc-950"
+                    className="text-zinc-500 hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -184,7 +184,7 @@ const Navbar = () => {
                 <Button variant={"link"} key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-zinc-500 hover:text-zinc-950"
+                    className="text-zinc-500 hover:text-white"
                   >
                     {link.name}
                   </Link>
@@ -199,7 +199,7 @@ const Navbar = () => {
               <Button variant={"link"}>
                 <Link
                   to={"/buycars"}
-                  className="text-zinc-500 hover:text-zinc-950"
+                  className="text-zinc-500 hover:text-white"
                 >
                   Buy
                 </Link>
@@ -207,7 +207,7 @@ const Navbar = () => {
               <Button variant={"link"}>
                 <Link
                   to={"/contact"}
-                  className="text-zinc-500 hover:text-zinc-950"
+                  className="text-zinc-500 hover:text-white"
                 >
                   Contact
                 </Link>
@@ -215,7 +215,7 @@ const Navbar = () => {
               <Button variant={"link"}>
                 <Link
                   to={"/about"}
-                  className="text-zinc-500 hover:text-zinc-950"
+                  className="text-zinc-500 hover:text-white"
                 >
                   About
                 </Link>

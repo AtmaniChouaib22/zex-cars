@@ -1,66 +1,103 @@
-import "../customstyles/custome.css";
-import image1 from "../assets/about1.jpg";
-import image2 from "../assets/about2.jpg";
-import image3 from "../assets/about3.jpg";
+import about from "../assets/about.jpg";
+import aboutImg from "../assets/bmw-offer.png";
+import drive from "../assets/drive.png";
 const About = () => {
   return (
     <>
-      <div className="about">
-        <div className="container">
-          <div className="header">
-            <h1>The Easiest Way to Sell Your Car</h1>
-            <p>As easy as 1, 2, 3.</p>
-          </div>
-          <div className="plan">
-            <h2>
-              <strong>We come to you</strong>
-            </h2>
-            <p>
-              The quickest and easiest way to sell your car by far. Whether you
-              are selling your car, motorbike, bakkie, boat, trailer, caravan
-              and more - <span>We buy them all!</span>
-            </p>
-          </div>
-          <div className="list-content">
-            <div className="list">
-              <i className="fa-solid fa-list-check"></i>
-              <h3>the request of buying a car is controlled by admin</h3>
+      <div className="">
+        <img src={about} alt="" className=" w-screen h-64 object-fill" />
+        <h1 className="text-zinc-200 text-6xl flex justify-center items-center -pb-10">
+          About Us
+        </h1>
+      </div>
+      <section className="bg-gradient-to-b from-black to-zinc-700 text-white py-16">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="about__section-content">
+              <h2 className="text-4xl font-bold mb-4">
+                Welcome to car rent service
+              </h2>
+              <p className="text-lg text-gray-200 leading-relaxed mb-6">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Voluptatum blanditiis esse accusantium dignissimos labore
+                laborum. Veniam, corporis mollitia temporibus, in quaerat vero
+                deleniti amet dolorem repudiandae, pariatur nam dolore! Impedit
+                neque sit ad temporibus quam similique dolor ipsam praesentium
+                sunt.
+              </p>
+
+              <div className="about__section-item flex items-center mb-4">
+                <p className="text-lg text-gray-200 flex items-center gap-2">
+                  <i className="ri-checkbox-circle-line"></i> Lorem ipsum dolor
+                  sit amet.
+                </p>
+
+                <p className="text-lg text-gray-200 flex items-center gap-2">
+                  <i className="ri-checkbox-circle-line"></i> Lorem ipsum dolor
+                  sit amet.
+                </p>
+              </div>
+
+              <div className="about__section-item flex items-center">
+                <p className="text-lg text-gray-200 flex items-center gap-2">
+                  <i className="ri-checkbox-circle-line"></i> Lorem ipsum dolor
+                  sit amet.
+                </p>
+
+                <p className="text-lg text-gray-200 flex items-center gap-2">
+                  <i className="ri-checkbox-circle-line"></i> Lorem ipsum dolor
+                  sit amet.
+                </p>
+              </div>
             </div>
-            <div className="list">
-              <i className="fa-solid fa-phone-volume"></i>
-              <h3>We contact you within an hour.</h3>
+
+            <div className="bg-transparent">
+              <img src={aboutImg} alt="" className="w-full" />
             </div>
-            <div className="list">
-              <i className="fa-solid fa-car-side"></i>
-              <h3>
-                We come to you, inspect your car and finalise the deal with
-                immediate payment.
-              </h3>
-            </div>
-          </div>
-          <div className="header">
-            <h1>Exceptional Customer Service</h1>
-            <p>You are our first priority.</p>
-          </div>
-          <div className="plan">
-            <h2>
-              <strong>Friendly, Personal Service</strong>
-            </h2>
-            <p>
-              At WeBuyCars you, our valued customer, always comes first. We
-              pride ourselves on high quality, professional and safe service to
-              ensure a hassle-free experience for you. We do not make use of
-              third parties or agents.
-            </p>
-          </div>
-          <div className="list-img">
-            <img src={image1} alt="img" />
-            <img src={image2} alt="img" />
-            <img src={image3} alt="img" />
           </div>
         </div>
-      </div>
-      ;
+      </section>
+      <section className="bg-gradient-to-t from-black to-zinc-700 py-16">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="about__page-img">
+              <img src={drive} alt="" className="w-full rounded-3" />
+            </div>
+
+            <div className="about__page-content">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-100">
+                We Are Committed To Provide Safe Ride Solutions
+              </h2>
+
+              <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eveniet veniam assumenda aperiam accusantium ex autem
+                perferendis repellendus nostrum delectus. Nemo et dolore est
+                tempore rem minima adipisci magni dolorum ipsam.
+              </p>
+
+              <p className="text-lg text-gray-300 leading-relaxed mb-4">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Eveniet veniam assumenda aperiam accusantium ex autem
+                perferendis repellendus nostrum delectus. Nemo et dolore est
+                tempore rem minima adipisci magni dolorum ipsam.
+              </p>
+
+              <div className="flex items-center gap-3">
+                <span className="text-2xl text-white">
+                  <i className="ri-phone-line"></i>
+                </span>
+
+                <div>
+                  <h6 className="text-lg font-semibold text-zinc-200">Need Any Help?</h6>
+                  <h4 className="text-xl text-white">+2130909090</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="h-20 bg-gradient-to-b from-black to-zinc-700"></div>
     </>
   );
 };
