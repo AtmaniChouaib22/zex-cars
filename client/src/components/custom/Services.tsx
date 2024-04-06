@@ -1,6 +1,6 @@
 import servicesData from "../../assets/data/serviceData.ts";
 import PropTypes from "prop-types";
-import 'remixicon/fonts/remixicon.css'
+import "remixicon/fonts/remixicon.css";
 const ServicesList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -12,7 +12,7 @@ const ServicesList = () => {
 };
 
 const ServiceItem = ({ item }) => (
-  <div className="mb-6">
+  <div className="mb-6 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg">
     <div className="bg-gradient-to-r from-zinc-50 to-zinc-300 rounded-lg shadow-md p-6">
       <span className="mb-3 inline-block">
         <i className={item.icon} />
@@ -31,6 +31,5 @@ ServiceItem.propTypes = {
     desc: PropTypes.string.isRequired,
   }).isRequired,
 };
-
 
 export default ServicesList;

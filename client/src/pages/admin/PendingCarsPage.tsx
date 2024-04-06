@@ -51,16 +51,16 @@ const PendingCarsPage = () => {
 
   return (
     <>
+      <div className="text-3xl text-white text-center font-bold py-5">
+        Pending Cars
+      </div>
       {isLoading ? (
         <div className="flex h-full items-center justify-center">
-          <RiseLoader color="#09090b" size={10} />
+          <RiseLoader color="#ffffff" size={10} />
         </div>
       ) : (
         <>
-          <div>
-            <div className="text-3xl text-center font-bold py-5">
-              Waiting Cars
-            </div>
+          <div className="bg-gradient-to-b from-black to-zinc-700">
             <div className="flex flex-wrap">
               {waitingCars.length > 0 ? (
                 <>

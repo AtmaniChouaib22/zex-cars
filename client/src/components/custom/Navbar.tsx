@@ -22,9 +22,9 @@ const links = [
 ];
 
 const adminLinks = [
-  { name: "dashboard", path: "/admin/dashboard" },
-  { name: "pending cars", path: "/admin/pendingcars" },
-  { name: "waiting deals", path: "/admin/waitingdeals" },
+  { name: "Dashboard", path: "/admin/dashboard" },
+  { name: "Pending Cars", path: "/admin/pendingcars" },
+  { name: "Unconfirmed Deals", path: "/admin/unconfirmeddeals" },
 ];
 
 {
@@ -38,7 +38,7 @@ const NavMobileLinks = ({
   user: object;
 }) => {
   return (
-    <div className="flex fixed bg-transparent bg-black flex-col gap-4 items-start">
+    <div className="flex  bg-transparent bg-black flex-col gap-4 items-start">
       {isLogged && !user.admin ? (
         <>
           <Link to={"/profile"} className="flex items-center gap-1">
@@ -197,10 +197,7 @@ const Navbar = () => {
           {!isLogged ? (
             <>
               <Button variant={"link"}>
-                <Link
-                  to={"/buycars"}
-                  className="text-zinc-500 hover:text-white"
-                >
+                <Link to={"/buycar"} className="text-zinc-500 hover:text-white">
                   Buy
                 </Link>
               </Button>
@@ -213,10 +210,7 @@ const Navbar = () => {
                 </Link>
               </Button>
               <Button variant={"link"}>
-                <Link
-                  to={"/about"}
-                  className="text-zinc-500 hover:text-white"
-                >
+                <Link to={"/about"} className="text-zinc-500 hover:text-white">
                   About
                 </Link>
               </Button>
@@ -268,7 +262,7 @@ const Navbar = () => {
           isSideMenuOpen && "translate-x-0"
         )}
       >
-        <section className="text-black bg-white flex-col absolute left-0 top-0 h-screen p-8 gap-3 z-50 w-56 flex ">
+        <section className="text-black bg-white absolute left-0 top-0 h-screen p-8 gap-3 z-50 w-56 ">
           <AiOutlineCloseCircle
             onClick={() => setMenu(false)}
             className="mt-0 mb-8 text-3xl cursor-pointer"

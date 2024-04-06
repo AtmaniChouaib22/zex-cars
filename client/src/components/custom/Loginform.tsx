@@ -39,7 +39,7 @@ const LoginForm = () => {
     }
   };
   return (
-    <form className="flex flex-col space-y-4 py-4 w-full  items-center justify-center">
+    <form className="flex flex-col space-y-4 py-4 w-full  items-center justify-center text-white bg-gradient-to-b from-black to-zinc-700">
       <h1 className="sm:text-3xl text-lg font-bold">Login </h1>
       {error && (
         <div className=" text-centee bg-red-500 py-3 px-2 rounded-sm w-full text-white">
@@ -49,6 +49,7 @@ const LoginForm = () => {
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
         <Label htmlFor="email">Email</Label>
         <Input
+          className="text-black"
           id="email"
           value={loginData.email}
           onChange={handleInputChange}
@@ -58,6 +59,7 @@ const LoginForm = () => {
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
         <Label htmlFor="password">Password</Label>
         <Input
+          className="text-black"
           id="password"
           type="password"
           placeholder="ex: password1234"
@@ -66,9 +68,13 @@ const LoginForm = () => {
         />
       </div>
       {isLoading === true ? (
-        <RiseLoader color="#09090b" size={10} />
+        <RiseLoader color="#ffffff" size={10} />
       ) : (
-        <Button type="submit" onClick={handleLoginSubmit} variant={"default"}>
+        <Button
+          type="submit"
+          onClick={handleLoginSubmit}
+          className="bg-zinc-500 text-white py-2 px-4 rounded-md hover:bg-zinc-700 transition duration-300 mb-5"
+        >
           Login
         </Button>
       )}

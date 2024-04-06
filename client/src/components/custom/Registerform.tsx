@@ -48,15 +48,15 @@ const Registerform = () => {
     }
   };
   return (
-    <form className="flex flex-col space-y-4 py-4 w-full  items-center justify-center">
-      <h1 className="sm:text-3xl text-lg font-bold">Register </h1>
+    <form className="flex flex-col space-y-4 py-4 w-full  items-center justify-center bg-gradient-to-b from-black to-zinc-700 text-white">
+      <h1 className="sm:text-3xl text-lg font-bold ">Register </h1>
       {err && (
-        <div className=" text-centee bg-red-500 py-3 px-2 rounded-sm w-full text-white text-center">
+        <div className=" bg-red-500 py-3 px-2 rounded-sm w-full text-white text-center">
           {err}
         </div>
       )}
       {data && (
-        <div className=" text-centee bg-green-500 py-3 px-2 rounded-sm w-full text-white text-center">
+        <div className=" bg-green-500 py-3 px-2 rounded-sm w-full text-white text-center">
           {data}
         </div>
       )}
@@ -68,6 +68,7 @@ const Registerform = () => {
           placeholder="ex: Ryan"
           value={registerData.first_name}
           onChange={handleRegInputChange}
+          className="text-black"
         />
       </div>
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
@@ -78,6 +79,7 @@ const Registerform = () => {
           placeholder="ex: Gosling"
           value={registerData.last_name}
           onChange={handleRegInputChange}
+          className="text-black"
         />
       </div>
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
@@ -88,6 +90,7 @@ const Registerform = () => {
           placeholder="ex: 0700000000"
           value={registerData.phone}
           onChange={handleRegInputChange}
+          className="text-black"
         />
       </div>
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
@@ -97,11 +100,13 @@ const Registerform = () => {
           value={registerData.email}
           onChange={handleRegInputChange}
           placeholder="ex: ryangosling@gmail.com"
+          className="text-black"
         />
       </div>
       <div className="flex flex-col px-2 sm:w-2/4 w-full">
         <Label htmlFor="password">Password</Label>
         <Input
+          className="text-black"
           id="password"
           type="password"
           placeholder="ex: password1234"
@@ -110,12 +115,12 @@ const Registerform = () => {
         />
       </div>
       {isLoading === true ? (
-        <RiseLoader color="#09090b" size={10} />
+        <RiseLoader color="#ffffff" size={10} />
       ) : (
         <Button
           type="submit"
           onClick={handleRegisterSubmit}
-          variant={"default"}
+          className="bg-zinc-500 text-white py-2 px-4 rounded-md hover:bg-zinc-700 transition duration-300 mb-5"
         >
           Register
         </Button>

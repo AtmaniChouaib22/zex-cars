@@ -24,15 +24,15 @@ const BuyPage = () => {
   }, []);
   return (
     <>
+      <div className="text-center text-white sm:text-3xl text-2xl font-bold">
+        All Available Cars
+      </div>
       {isLoading ? (
         <div className="flex min-h-screen items-center justify-center">
-          <RiseLoader color="#09090b" size={10} />
+          <RiseLoader color="#ffffff" size={10} />
         </div>
       ) : (
         <div className="p-5 min-h-screen">
-          <div className="text-center sm:text-3xl text-2xl font-bold">
-            All Available Cars
-          </div>
           {error && (
             <div className="text-3xl text-center ">Something went wrong</div>
           )}
