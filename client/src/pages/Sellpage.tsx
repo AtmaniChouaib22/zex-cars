@@ -73,8 +73,8 @@ const Sellpage = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center py-10">
-          <div className="text-3xl font-bold">Sell your car</div>
-          <p className="sm:px-40 px-10 py-5">
+          <div className="text-3xl font-bold text-white">Sell your car</div>
+          <p className="sm:px-40 px-10 py-5 text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
             consequuntur tempore quos eius recusandae natus exercitationem error
             itaque cumque maiores doloremque possimus cupiditate ducimus
@@ -87,25 +87,35 @@ const Sellpage = () => {
             <div className="text-2xl font-bold text-center gap-3">
               Car Details
             </div>
-            <div className="sm:grid sm:grid-cols-2 sm:gap-3 px-8 sm:px-20">
+            <div className="sm:grid sm:grid-cols-2 sm:gap-3 px-8 sm:px-20 ">
               <div className="col-span-2">
-                <Label htmlFor="title">Title</Label>
+                <Label htmlFor="title" className="text-white">
+                  Title
+                </Label>
                 <Input type="text" id="title" onChange={handleChange} />
               </div>
               <div className="col-span-2">
-                <Label htmlFor="description">Description</Label>
+                <Label htmlFor="description" className="text-white">
+                  Description
+                </Label>
                 <Input type="text" id="description" onChange={handleChange} />
               </div>
               <div>
-                <Label htmlFor="location">location</Label>
+                <Label htmlFor="location" className="text-white">
+                  location
+                </Label>
                 <Input type="text" id="location" onChange={handleChange} />
               </div>
               <div>
-                <Label htmlFor="model">Model</Label>
+                <Label htmlFor="model" className="text-white">
+                  Model
+                </Label>
                 <Input type="text" id="model" onChange={handleChange} />
               </div>
               <div>
-                <Label htmlFor="image">Car Picture</Label>
+                <Label htmlFor="image" className="text-white">
+                  Car Picture
+                </Label>
                 <Input
                   type="file"
                   id="image"
@@ -119,7 +129,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="mileage">Mileage</Label>
+                <Label htmlFor="mileage" className="text-white">
+                  Mileage
+                </Label>
                 <Input
                   type="number"
                   id="mileage"
@@ -128,7 +140,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="make">Make</Label>
+                <Label htmlFor="make" className="text-white">
+                  Make
+                </Label>
                 <Input
                   type="text"
                   id="make"
@@ -137,7 +151,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="year">Registration Year</Label>
+                <Label htmlFor="year" className="text-white">
+                  Registration Year
+                </Label>
                 <Input
                   type="number"
                   id="year"
@@ -146,7 +162,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="n_of_seats">No of seats</Label>
+                <Label htmlFor="n_of_seats" className="text-white">
+                  No of seats
+                </Label>
                 <Input
                   type="number"
                   id="n_of_seats"
@@ -155,7 +173,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="n_of_doors">no of doors</Label>
+                <Label htmlFor="n_of_doors" className="text-white">
+                  no of doors
+                </Label>
                 <Input
                   type="number"
                   id="n_of_doors"
@@ -164,7 +184,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="colour">Colour</Label>
+                <Label htmlFor="colour" className="text-white">
+                  Colour
+                </Label>
                 <Input
                   type="text"
                   id="colour"
@@ -173,7 +195,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="price">Price</Label>
+                <Label htmlFor="price" className="text-white">
+                  Price
+                </Label>
                 <Input
                   type="number"
                   id="price"
@@ -182,12 +206,14 @@ const Sellpage = () => {
                 />
               </div>
             </div>
-            <div className="text-2xl font-bold text-center">
+            <div className="text-2xl font-bold text-center text-white">
               Car Performance Details
             </div>
-            <div className="flex justify-center flex-wrap items-center px-8 sm:px-20 gap-3 ">
+            <div className="flex justify-center flex-wrap items-center px-8 sm:px-20 gap-3">
               <div className="">
-                <Label htmlFor="engine_capacity">Engine Capacity</Label>
+                <Label htmlFor="engine_capacity" className="text-white">
+                  Engine Capacity
+                </Label>
                 <Input
                   type="number"
                   id="engine_capacity"
@@ -196,7 +222,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="fuel_tank_capacity">Fuel tank capacity</Label>
+                <Label htmlFor="fuel_tank_capacity" className="text-white">
+                  Fuel tank capacity
+                </Label>
                 <Input
                   type="number"
                   id="fuel_tank_capacity"
@@ -205,7 +233,9 @@ const Sellpage = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="fuel_type">Fuel Type</Label>
+                <Label htmlFor="fuel_type" className="text-white">
+                  Fuel Type
+                </Label>
                 <select
                   id="fuel_type"
                   className="w-full sm:w-3/4 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -222,7 +252,9 @@ const Sellpage = () => {
                 </select>
               </div>
               <div>
-                <Label htmlFor="gears">Gears</Label>
+                <Label htmlFor="gears" className="text-white">
+                  Gears
+                </Label>
                 <Input
                   type="number"
                   id="gears"
@@ -232,7 +264,9 @@ const Sellpage = () => {
               </div>
               <div>
                 <div>
-                  <Label htmlFor="transmission">Transmission</Label>
+                  <Label htmlFor="transmission" className="text-white">
+                    Transmission
+                  </Label>
                   <select
                     id="transmission"
                     className="w-full sm:w-3/4"

@@ -26,7 +26,7 @@ const Home = () => {
   const { isLogged } = useContext(appContext);
   return (
     <>
-      <div className="relative bg-black w-full h-screen">
+      <div className="relative bg-black w-full h-screen" id="home">
         <div className="absolute flex flex-col mt-48 h-36 w-full justify-between items-center z-10 text-white px-4">
           <h1 className="sm:text-6xl text-3xl font-bold font-mono">
             BUYUNG OR SELLING?

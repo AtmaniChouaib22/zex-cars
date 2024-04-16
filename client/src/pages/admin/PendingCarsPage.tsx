@@ -82,7 +82,9 @@ const PendingCarsPage = () => {
                   ))}
                 </>
               ) : (
-                <div className="text-center">No cars found</div>
+                <div className="text-center mx-auto text-white">
+                  No cars found
+                </div>
               )}
             </div>
           </div>

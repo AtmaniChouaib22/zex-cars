@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { logout } from "@/lib/fetchUtils";
+import logo from "@/assets/1.png";
 
 const links = [
   { name: "Buy", path: "/buycar" },
@@ -130,7 +131,9 @@ const Navbar = () => {
           onClick={() => setMenu(true)}
         />
         <Link to={"/"} className="text-2xl font-bold">
-          <div>ZEXCARS</div>
+          <div>
+            <img src={logo} width={100}></img>
+          </div>
         </Link>
       </section>
 

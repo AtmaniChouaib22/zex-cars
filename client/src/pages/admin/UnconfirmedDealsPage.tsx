@@ -78,7 +78,9 @@ const UnconfirmedDealsPage = () => {
                   ))}
                 </>
               ) : (
-                <div className="text-center">No deals found</div>
+                <div className="text-center mx-auto text-white">
+                  No deals found
+                </div>
               )}
             </div>
           </div>
