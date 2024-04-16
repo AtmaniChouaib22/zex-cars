@@ -1,0 +1,64 @@
+# PROJECT TODO TASKS
+
+# FRONTEND TASKS
+
+- [x] project init/dependencies 
+- [x*] NAVBAR 
+- [x] FOOTER 
+- [x*] CAR ITEM 
+- [x*] USER TESTIMONIALS item
+- [x*] fiche technique component 
+- [w] HOMPAGE /mainsection/clickbait/advantages/testimonals
+- [x] BUYING PAGE 
+- [x] SINGLE CAR DETAILS PAGE ===> car image  all details/ button to checkout 
+- [x] Checkout Page ===>  (model)payment method
+- [x*] SELL PAGE ===> car informations form and photo and button to send it to the admin
+- [x] myAccount page 
+- [x] state managment
+- [x*] loading effects
+- [x] LOGIN PAGE 
+- [x] REGISTER PAGE
+- [x] USER DEALS PAGE 
+- [x] ADMIN all SELLING DEALS (cars) pending
+- [x] ADMIN all buying deals (deals) unconfirmed 
+
+
+# BACKEND TASKS
+
+- [x] backend dependencies init 
+- [x] server init/config
+- [x] cloud database cluster init 
+- [x] MVC architecture  
+- [x] ENV VARIABLES 
+- [x*] schemas design 
+- [x] passport and sessions authentication config
+- [x] multer package init 
+
+#authentication 
+- [x] user register 
+- [x] user login 
+- [x] user logout
+- [x] custom authentication middleware  
+- [x] admin login
+- [x] admin logout 
+- [x] custom admin middleware
+
+#website functionality
+
+- [x] sell a car (post)
+- [x] buy a car (post)
+- [x] upload/update avatar and delete one from the file system(post)
+- [x] contact us 
+- [x] get all available cars for the user (get) (only available status)
+- [x] get user account details (get)
+- [x] get current user deals selling and buying cars (get)
+- [x] admin approve operations (patch) (status:available(for sale), pending(on wait for admin confirmation), sold)
+- [x] admin get all cars (get) (filter: pending, available, sold)
+
+#BUG FIXES 
+
+- [x] prevent user from seeing and buying his own car
+- [x*]server custom error handeling 
+- [x]fix auto update avatar on change
+- [x] clear form on submit 
+- [x] fix ui bugs 
