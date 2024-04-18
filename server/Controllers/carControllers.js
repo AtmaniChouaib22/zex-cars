@@ -57,6 +57,7 @@ const create_car = async (req, res, next) => {
       res.json({ message: 'Car sell request sent to admin', car: car });
     });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

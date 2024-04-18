@@ -75,8 +75,10 @@ app.use('/api', router);
 //error handling middleware for development environment
 app.use((err, req, res, next) => {
   if (err instanceof CustomError) {
+    console.log(err);
     res.status(err.status).json({ error: err.message });
   } else {
+    console.log(err);
     res.status(500).json({ error: 'Something went wrong' });
   }
 });

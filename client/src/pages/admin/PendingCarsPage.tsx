@@ -61,7 +61,7 @@ const PendingCarsPage = () => {
       ) : (
         <>
           <div className="bg-gradient-to-b from-black to-zinc-700">
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap justify-center">
               {waitingCars.length > 0 ? (
                 <>
                   {waitingCars.map((car) => (
