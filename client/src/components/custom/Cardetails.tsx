@@ -6,6 +6,7 @@ import { IoIosColorPalette } from "react-icons/io";
 import { FaRegRegistered } from "react-icons/fa";
 import { FaRoute } from "react-icons/fa6";
 import { FaGears } from "react-icons/fa6";
+
 const Cardetails = ({
   make,
   model,
@@ -26,64 +27,82 @@ const Cardetails = ({
   colour: string;
 }) => {
   return (
-    <div className="flex flex-col p-4 items-center  bg-white shadow-md rounded-lg">
-      <div className="text-2xl font-bold">Car Details</div>
-      <div className="w-full">
-        <div className="border-b-2 border-zinc-900  flex justify-between flex-wrap px-2 sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <CgBmw />
-            Make
+    <div className="flex flex-col p-5 items-center bg-white shadow-lg rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-xl max-w-md mx-auto w-full">
+      <div className="w-full mb-4 pb-3 border-b border-gray-200">
+        <h2 className="text-2xl font-bold text-center text-gray-800">Car Details</h2>
+      </div>
+      
+      <div className="w-full space-y-2">
+        {/* Make */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><CgBmw /></span>
+            <span className="font-medium text-gray-700">Make</span>
           </div>
-          <span className="font-bold">{make}</span>
+          <span className="font-bold text-gray-900">{make}</span>
         </div>
-        <div className="border-b-2 border-zinc-900  flex justify-between flex-wrap px-2 sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <IoLogoModelS />
-            Model
+        
+        {/* Model */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><IoLogoModelS /></span>
+            <span className="font-medium text-gray-700">Model</span>
           </div>
-          <span className="font-bold">{model}</span>
+          <span className="font-bold text-gray-900">{model}</span>
         </div>
-        <div className="border-b-2 border-zinc-900  flex justify-between flex-wrap px-2 sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <FaRoute />
-            Mileage
+        
+        {/* Mileage */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><FaRoute /></span>
+            <span className="font-medium text-gray-700">Mileage</span>
           </div>
-          <span className="font-bold">{`${mileage} km`}</span>
+          <span className="font-bold text-gray-900">{`${mileage} km`}</span>
         </div>
-        <div className="border-b-2 border-zinc-900   flex justify-between flex-wrap px-2 sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <FaRegRegistered />
-            Registration Year
+        
+        {/* Registration Year */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><FaRegRegistered /></span>
+            <span className="font-medium text-gray-700">Registration Year</span>
           </div>
-          <span className="font-bold">{year}</span>
+          <span className="font-bold text-gray-900">{year}</span>
         </div>
-        <div className="border-b-2 border-zinc-900 flex justify-between px-2 flex-wrap sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <FaGears />
-            Transmission
+        
+        {/* Transmission */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><FaGears /></span>
+            <span className="font-medium text-gray-700">Transmission</span>
           </div>
-          <span className="font-bold">{transmission}</span>
+          <span className="font-bold text-gray-900">{transmission}</span>
         </div>
-        <div className="border-b-2 border-zinc-900 flex justify-between px-2 flex-wrap sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <MdAirlineSeatReclineExtra />
-            Seats
+        
+        {/* Seats */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><MdAirlineSeatReclineExtra /></span>
+            <span className="font-medium text-gray-700">Seats</span>
           </div>
-          <span className="font-bold">{n_of_seats}</span>
+          <span className="font-bold text-gray-900">{n_of_seats}</span>
         </div>
-        <div className="border-b-2 border-zinc-900  flex justify-between px-2 flex-wrap sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <GiCarDoor />
-            Doors
+        
+        {/* Doors */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><GiCarDoor /></span>
+            <span className="font-medium text-gray-700">Doors</span>
           </div>
-          <span className="font-bold">{n_of_doors}</span>
+          <span className="font-bold text-gray-900">{n_of_doors}</span>
         </div>
-        <div className="border-b-2 border-zinc-900 flex justify-between px-2 flex-wrap sm:px-6 py-2">
-          <div className="flex items-center gap-1">
-            <IoIosColorPalette />
-            Color
-          </div>{" "}
-          <span className="font-bold">{colour}</span>
+        
+        {/* Color */}
+        <div className="group bg-gray-50 hover:bg-gray-100 rounded-lg transition-all duration-200 flex justify-between items-center p-3">
+          <div className="flex items-center gap-3">
+            <span className="text-blue-600 text-xl"><IoIosColorPalette /></span>
+            <span className="font-medium text-gray-700">Color</span>
+          </div>
+          <span className="font-bold text-gray-900">{colour}</span>
         </div>
       </div>
     </div>

@@ -31,62 +31,93 @@ const Caritem = ({
   return (
     <Link
       to={id}
-      className="w-72 bg-white rounded-xl shadow-md shadow-zinc-400 overflow-hidden m-3 transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-lg"
+      className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-5px] flex flex-col w-full sm:max-w-[340px] h-full"
     >
-      <div className="sm:p-6 p-2 flex flex-col justify-between h-full items-center">
-        <div className="flex-shrink-0 sm:w-full w-full">
-          <img
-            className="w-full sm:h-32 object-cover h-full rounded-xl"
-            src={`../uploads/cars/${image}`}
-            alt="car image"
-          />
-        </div>
-        <div>
-          <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold py-1">
-            <Badge
-              className={clsx({
-                "bg-green-500 hover:bg-green-600": status === "available",
-                "bg-red-500 hover:bg-red-600": status === "sold",
-              })}
-            >
-              {status}
-            </Badge>
-          </div>
-          <div>
-            <Badge variant={"secondary"}>{fuel_type}</Badge>
-            <Badge variant={"secondary"}>{mileage} km</Badge>
-            <Badge variant={"secondary"}>{location}</Badge>
-          </div>
-          <div className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
-            {title}
-          </div>
-        </div>
-        <div className="mt-4 sm:mt-0 text-sm text-gray-700">
-          <p>{`Price: $ ${price}`}</p>
-        </div>
-        {admin && (
-          <>
+      {/* Car Image */}
+      <div className="relative w-full h-48 overflow-hidden">
+        <img
+          className="w-full h-full object-cover"
+          src={`../uploads/cars/${image}`}
+          alt={`${title} image`}
+        />
+        <Badge
+          className={clsx(
+            "absolute top-3 right-3 px-3 py-1 text-xs font-semibold",
             {
-              <div className="flex flex-wrap gap-2">
-                <Button
-                  className="bg-green-500 hover:bg-green-600"
-                  size={"sm"}
-                  onClick={() => handleSetCarToAvailable(id)}
-                >
-                  Set Available
-                </Button>
-                <Button
-                  variant={"destructive"}
-                  size={"sm"}
-                  onClick={() => handleSetCarToRefused(id)}
-                >
-                  Set Refused
-                </Button>
-              </div>
+              "bg-green-500 hover:bg-green-600 text-white":
+                status === "available",
+              "bg-red-500 hover:bg-red-600 text-white": status === "sold",
+              "bg-yellow-500 hover:bg-yellow-600 text-white":
+                status === "pending",
             }
-          </>
-        )}
+          )}
+        >
+          {status.toUpperCase()}
+        </Badge>
       </div>
+
+      {/* Car Info */}
+      <div className="p-4 flex flex-col flex-grow">
+        {/* Title */}
+        <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
+          {title}
+        </h3>
+
+        {/* Price */}
+        <div className="text-xl font-bold text-blue-600 mb-3">
+          ${price.toLocaleString()}
+        </div>
+
+        {/* Specifications */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          <Badge
+            variant="outline"
+            className="bg-gray-50 text-gray-700 border-gray-200"
+          >
+            {mileage.toLocaleString()} km
+          </Badge>
+          <Badge
+            variant="outline"
+            className="bg-gray-50 text-gray-700 border-gray-200"
+          >
+            {fuel_type}
+          </Badge>
+          <Badge
+            variant="outline"
+            className="bg-gray-50 text-gray-700 border-gray-200"
+          >
+            {location}
+          </Badge>
+        </div>
+      </div>
+
+      {/* Admin Actions */}
+      {admin && (
+        <div className="p-4 pt-0 mt-auto">
+          <div className="flex flex-wrap gap-2 justify-between">
+            <Button
+              className="flex-1 bg-green-500 hover:bg-green-600 text-white"
+              size="sm"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSetCarToAvailable(id);
+              }}
+            >
+              Set Available
+            </Button>
+            <Button
+              className="flex-1 bg-red-500 hover:bg-red-600 text-white"
+              size="sm"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSetCarToRefused(id);
+              }}
+            >
+              Set Refused
+            </Button>
+          </div>
+        </div>
+      )}
     </Link>
   );
 };

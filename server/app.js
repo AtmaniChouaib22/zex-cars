@@ -7,7 +7,7 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 const router = require('./Routes/router');
-require('./config/passport');
+require('./Config/passport.js');
 const CustomError = require('./Utils/errorMiddleware');
 
 //environment variables
@@ -17,11 +17,12 @@ const SESSION_SECRET = process.env.SESSION_SECRET;
 
 //database session store
 const sessionStore = new MongoStore({
-  mongoUrl: MONGO_URI,
-  collection: 'sessions',
-});
+      mongoUrl: MONGO_URI,
+      collection: 'sessions',
+    });
 
 //server start funtion
+
 async function serverLunch() {
   try {
     await mongoose.connect(MONGO_URI);
